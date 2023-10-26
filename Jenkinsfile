@@ -1,38 +1,23 @@
-
 pipeline {
     agent any
 
     stages {
-        
-
-        stage('List Files') {
+        stage('Checkout') {
             steps {
+                // Check out your Git repository, replacing the URL with your own value
                 script {
-                    script {
-                    def branchFile = readFile('./file')
-                    def branchName = branchFile.trim()
-                    sh "git clone -b ${branchName} https://github.com/vemulasaikrishna03/JenkinsTest.git"
-                }
-                    // Change to the Git repository directory
-                    dir('repo') {
-                        // List all files in the branch
-                        sh "git ls-tree --name-only HEAD"
-                        
-                    }
+                    sh "git clone https://github.com/vemulasaikrishna03/Experiments.git"
                 }
             }
         }
-    }
-    stage('Retrieve Changes') {
+
+        stage('Print Branch') {
             steps {
                 script {
                     // Change to the Git repository directory
                     dir('repo') {
-                        // Fetch the latest changes from the remote repository
-                        sh 'git fetch'
-                        
-                        // Get the list of changed files between the current branch and its remote counterpart
-                        sh 'git diff --name-only @{u} HEAD'
+                        // Get the name of the current branch
+                        sh 'git rev-parse --abbrev-ref HEAD'
                     }
                 }
             }

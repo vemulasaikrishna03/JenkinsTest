@@ -6,7 +6,7 @@ pipeline {
             steps {
                 // Check out your Git repository, replacing the URL with your own value
                 script {
-                    def branchFile = readFile('path/to/branch_to_build.txt')
+                    def branchFile = readFile('./file')
                     def branchName = branchFile.trim()
                     env.BRANCH_NAME = branchName
                     sh "git clone -b ${branchName} https://github.com/your/repo.git"

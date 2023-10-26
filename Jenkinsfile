@@ -26,6 +26,21 @@ pipeline {
             }
         }
     }
+    stage('Retrieve Changes') {
+            steps {
+                script {
+                    // Change to the Git repository directory
+                    dir('repo') {
+                        // Fetch the latest changes from the remote repository
+                        sh 'git fetch'
+                        
+                        // Get the list of changed files between the current branch and its remote counterpart
+                        sh 'git diff --name-only @{u} HEAD'
+                    }
+                }
+            }
+        }
+    }
 
     post {
         always {

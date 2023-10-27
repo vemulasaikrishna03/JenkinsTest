@@ -1,7 +1,6 @@
 {
-  "name": "John Doe",
-  "email": "johndoe@example.com",
-  "age": 30,
-  "city": "New York"
+  "name": "main",
+  "info": "hi from branch main"
+  
 }
 

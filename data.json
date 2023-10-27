@@ -1,6 +1,5 @@
 {
   "name": "staging",
-  "email": "staging@example.com",
-  "age": 30,
-  "city": "japan"
+  "info": "hi from branch staging"
+  
 }
